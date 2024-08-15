@@ -6,6 +6,13 @@
   <h1>Browsing by Category</h1>
   <ul>
     <!-- list the categories here as links to /category/:categoryId -->
+     <% categories.forEach(category => { %>
+      <a href="/category/:<%= category.categoryid %>">
+        <li>
+          <%= category.categoryname %>  
+        </li>
+      </a>
+      <% }); %>           
   </ul>
 </body>
 

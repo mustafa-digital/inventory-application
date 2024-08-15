@@ -6,6 +6,13 @@
   <h1>Browsing by Brand</h1>
   <ul>
     <!-- list the brand here as links to /brand/:brandId -->
+    <% brands.forEach(brand => { %>
+      <a href="/brand/:<%= brand.brandid %>">
+        <li>
+          <%= brand.brandname %>  
+        </li>
+      </a>
+    <% }); %>
   </ul>
 </body>
 
