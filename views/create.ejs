@@ -4,6 +4,8 @@
 
 <body>
   <h3>Add New Item</h3>
+
+  <%- include("partials/errors.ejs") %>
   <form action="/create" method="post">
 
     <!-- ITEM NAME -->
@@ -36,7 +38,7 @@
 
     <!-- INVENTORY -->
      <label for="inventory">Inventory:</label>
-     <input type="number" name="inventory" required>
+     <input type="number" name="inventory" min=0 required>
 
      <br />
 
