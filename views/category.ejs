@@ -5,9 +5,9 @@
 <body>
   <h1>Browsing by Category</h1>
   <ul>
-    <!-- list the categories here as links to /category/:categoryId -->
+    <!-- list the categories here as links to /category/:categoryName -->
      <% categories.forEach(category => { %>
-      <a href="/category/:<%= category.categoryid %>">
+      <a href="/category/<%= category.categoryname.toLowerCase() %>">
         <li>
           <%= category.categoryname %>  
         </li>

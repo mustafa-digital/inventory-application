@@ -1,0 +1,20 @@
+<!-- browse.ejs -->
+
+<%- include("./partials/head") %>
+
+<body>
+  <h3>Items</h3>
+    <button onclick="location.href='/create'">Add Item</button>
+  <ul>
+  <% items.forEach(item => { %>
+    <li>
+      <h3><%=item.itemname%></h3>
+      <h3>Inventory: <%= item.inventory%></h3>
+      <button onclick="location.href='/item?itemId=<% item.itemid%>'">Update</button>
+      <button onclick="confirm('Are you sure you want to delete this item?')">Delete</button>
+    </li>
+    <% }); %>
+  </ul>
+</body>
+
+<%- include("./partials/footer") %>

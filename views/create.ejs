@@ -1,0 +1,49 @@
+<!-- create.ejs -->
+
+<%- include("./partials/head") %>
+
+<body>
+  <h3>Add New Item</h3>
+  <form action="/create" method="post">
+
+    <!-- ITEM NAME -->
+    <label for="itemName">Item Name:</label>
+    <input type="text" name="itemName" minlength="3" required>
+
+    <br />
+
+    <!-- CATEGORY -->
+    <label for="category">Category:</label>
+    <select name="category" required>
+      <option value="">Choose category</option>
+      <% categories.forEach(category => { %>
+        <option value="<%= category.categoryid %>"><%= category.categoryname %></option>
+      <% }) %>
+    </select>
+
+    <br />
+
+    <!-- BRAND -->
+    <label for="brand">Brand:</label>
+    <select name="brand" required>
+      <option value="">Choose brand</option>
+      <% brands.forEach(brand => { %>
+        <option value="<%= brand.brandid %>"><%= brand.brandname %></option>
+      <% }) %>
+    </select>
+
+    <br />
+
+    <!-- INVENTORY -->
+     <label for="inventory">Inventory:</label>
+     <input type="number" name="inventory" required>
+
+     <br />
+
+     <button type="submit">Submit</button>
+  </form>
+
+  <a href="/">Back to home</a>
+</body>
+
+<%- include("./partials/footer") %>

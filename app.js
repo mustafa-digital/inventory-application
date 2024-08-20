@@ -10,10 +10,14 @@ app.use(express.urlencoded({ extended: true }));
 const indexRouter = require("./routes/indexRouter");
 const categoryRouter = require("./routes/categoryRouter");
 const brandRouter = require("./routes/brandRouter");
+const itemRouter = require("./routes/itemRouter");
+const createRouter = require("./routes/createRouter");
 
 app.use("/", indexRouter);
 app.use("/category", categoryRouter);
 app.use("/brand", brandRouter);
+app.use("/item", itemRouter);
+app.use("/create", createRouter);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => console.log(`Express app listening on port ${PORT}`));

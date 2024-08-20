@@ -5,9 +5,10 @@
 <body>
   <h1>Browsing by Brand</h1>
   <ul>
-    <!-- list the brand here as links to /brand/:brandId -->
+    <!-- list the brand here as links to /brand/:brandName -->
     <% brands.forEach(brand => { %>
-      <a href="/brand/:<%= brand.brandid %>">
+      <% const brandURL = brand.brandname.toLowerCase().replaceAll(" ", "_"); %>
+      <a href="/brand/<%- brandURL %>">
         <li>
           <%= brand.brandname %>  
         </li>
