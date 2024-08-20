@@ -1,6 +1,13 @@
 /* queries.js */
 const pool = require("./pool");
 
+async function getItemFromID(itemId) {
+  const { rows } = await pool.query(
+    "SELECT * FROM item WHERE item.itemid = ($1)",
+    [itemId],
+  );
+  return rows;
+}
 async function getCategories() {
   const { rows } = await pool.query("SELECT * FROM Category");
   return rows;
@@ -51,12 +58,21 @@ async function insertItem(item) {
   console.log("Added item to db");
 }
 
+async function updateItem(item) {
+  await pool.query(
+    "UPDATE item SET itemname = ($1), categoryid = ($2), brandid = ($3), inventory = ($4) WHERE itemid = ($5)",
+    [item.itemName, item.category, item.brand, item.inventory, item.itemId],
+  );
+  console.log(`Updated item ${item.itemId}`);
+}
+
 async function deleteItem(itemId) {
   await pool.query("DELETE FROM item WHERE item.itemid = ($1)", [itemId]);
   console.log(`Deleted item ${itemId}`);
 }
 
 module.exports = {
+  getItemFromID,
   getCategories,
   getBrands,
   getCategoryIdFromName,
@@ -64,5 +80,6 @@ module.exports = {
   getBrandIdFromName,
   getBrandItems,
   insertItem,
+  updateItem,
   deleteItem,
 };

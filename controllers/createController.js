@@ -1,16 +1,7 @@
 /* createController.js */
 const { getCategories, getBrands, insertItem } = require("../db/queries");
-const { body, validationResult } = require("express-validator");
-
-const validateItem = [
-  body("itemName")
-    .trim()
-    .isAlpha()
-    .withMessage("Item Name must only contain alphanumeric characters.")
-    .isLength({ min: 3, max: 25 })
-    .withMessage("Item Name must be between 3 to 25 characters."),
-  body("inventory"),
-];
+const { validationResult } = require("express-validator");
+const { validateItem } = require("../utilities/validation");
 
 const createController = {
   get: async (req, res) => {

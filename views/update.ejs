@@ -1,4 +1,4 @@
-<!-- create.ejs -->
+<!-- update.ejs -->
 
 <%- include("./partials/head") %>
 
@@ -6,11 +6,11 @@
   <h3>Add New Item</h3>
 
   <%- include("partials/errors.ejs") %>
-  <form action="/create" method="post">
+  <form action="/item/<%= item.itemid %>/update" method="post">
 
     <!-- ITEM NAME -->
     <label for="itemName">Item Name:</label>
-    <input type="text" name="itemName" minlength="3" maxLength="25" required>
+    <input type="text" value="<%= item.itemname %>"" name="itemName" minlength="3" maxLength="25" required>
 
     <br />
 
@@ -19,7 +19,7 @@
     <select name="category" required>
       <option disabled value="">Choose category</option>
       <% categories.forEach(category => { %>
-        <option value="<%= category.categoryid %>"><%= category.categoryname %></option>
+        <option <%= item.categoryid === category.categoryid ? "selected" : ""  %> value="<%= category.categoryid %>"><%= category.categoryname %></option>
       <% }) %>
     </select>
 
@@ -30,7 +30,7 @@
     <select name="brand" required>
       <option disabled value="">Choose brand</option>
       <% brands.forEach(brand => { %>
-        <option value="<%= brand.brandid %>"><%= brand.brandname %></option>
+        <option <%= item.brandid === brand.brandid ? "selected" : ""  %> value="<%= brand.brandid %>"><%= brand.brandname %></option>
       <% }) %>
     </select>
 
@@ -38,7 +38,7 @@
 
     <!-- INVENTORY -->
      <label for="inventory">Inventory:</label>
-     <input type="number" name="inventory" min=0 required>
+     <input type="number" name="inventory" min=0 value="<%= item.inventory %>" required>
 
      <br />
 
