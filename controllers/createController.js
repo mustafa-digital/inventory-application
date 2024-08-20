@@ -27,7 +27,9 @@ const createController = {
   post: [
     validateItem,
     async (req, res) => {
+      // get validation errors, if there are any
       const errors = validationResult(req);
+      // if errors, re-render the create form with error messages
       if (!errors.isEmpty()) {
         const [categories, brands] = await Promise.all([
           getCategories(),

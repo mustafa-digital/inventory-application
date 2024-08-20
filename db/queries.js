@@ -51,6 +51,11 @@ async function insertItem(item) {
   console.log("Added item to db");
 }
 
+async function deleteItem(itemId) {
+  await pool.query("DELETE FROM item WHERE item.itemid = ($1)", [itemId]);
+  console.log(`Deleted item ${itemId}`);
+}
+
 module.exports = {
   getCategories,
   getBrands,
